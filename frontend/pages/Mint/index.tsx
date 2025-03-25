@@ -1,16 +1,15 @@
 import { HeroSection } from "./components/HeroSection";
-import { StatsSection } from "./components/StatsSection";
+
 import { OurStorySection } from "./components/OurStorySection";
-import { useGetAssetData } from "../../hooks/useGetAssetData";
+
 import { Socials } from "./components/Socials";
-import { ConnectWalletAlert } from "./components/ConnectWalletAlert";
+
 import { Header } from "@/components/Header";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
 export function Mint() {
-  const { data, isLoading } = useGetAssetData();
 
   const queryClient = useQueryClient();
   const { account } = useWallet();
@@ -18,13 +17,6 @@ export function Mint() {
     queryClient.invalidateQueries();
   }, [account, queryClient]);
 
-  if (isLoading) {
-    return (
-      <div className="text-center p-8">
-        <h1 className="title-md">Loading...</h1>
-      </div>
-    );
-  }
 
   return (
     <>

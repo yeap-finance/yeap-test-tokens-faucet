@@ -1,10 +1,6 @@
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 // Internal pages
 import { Mint } from "@/pages/Mint";
-import { CreateFungibleAsset } from "@/pages/CreateFungibleAsset";
-import { MyFungibleAssets } from "@/pages/MyFungibleAssets";
-import { TopBanner } from "./components/TopBanner";
-import { IS_DEV } from "./constants";
 
 function Layout() {
   return (
