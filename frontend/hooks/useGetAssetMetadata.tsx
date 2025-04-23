@@ -65,7 +65,7 @@ export const getMetadatasByCreator = async (creator: string) => {
 
   const metadata = await aptosClient().getFungibleAssetMetadata({
     options: {
-      where: { creator_address: { _eq: `${formattedCreatorAddress}` } },
+      where: { creator_address: { _eq: `${formattedCreatorAddress}` }, symbol: { _iregex: "Yep" } },
     },
   });
   return metadata;
