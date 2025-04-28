@@ -15,7 +15,6 @@ import { aptosClient } from "@/utils/aptosClient";
 // Internal constants
 import { CREATOR_ADDRESS, NETWORK, TEST_ASSETS } from "@/constants";
 // Internal assets
-import Placeholder1 from "@/assets/placeholders/asset.png";
 import ExternalLink from "@/assets/icons/external-link.svg";
 import Copy from "@/assets/icons/copy.svg";
 // Internal config
