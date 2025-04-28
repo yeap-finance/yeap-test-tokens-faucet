@@ -13,7 +13,7 @@ import { Socials } from "@/pages/Mint/components/Socials";
 // Internal utils
 import { aptosClient } from "@/utils/aptosClient";
 // Internal constants
-import { CREATOR_ADDRESS, NETWORK } from "@/constants";
+import { CREATOR_ADDRESS, NETWORK, TEST_ASSETS } from "@/constants";
 // Internal assets
 import Placeholder1 from "@/assets/placeholders/asset.png";
 import ExternalLink from "@/assets/icons/external-link.svg";
@@ -55,8 +55,12 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
   useEffect(() => {
     const fetchMetadata = async () => {
       const metadatas = await getMetadatasByCreator(CREATOR_ADDRESS);
-      setAssetMetadatas(metadatas);
-      setAssetObj(metadatas[0]);
+
+      const testMetas = metadatas.filter(    (metadata) => {
+        return TEST_ASSETS.includes(metadata.asset_type);
+      })
+      setAssetMetadatas(testMetas);
+      setAssetObj(testMetas[0]);
     };
 
     fetchMetadata();
@@ -96,9 +100,9 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
   return (
     <section className="hero-container flex flex-col md:flex-row gap-6 px-4 max-w-screen-xl mx-auto w-full">
       <Image
-        src={Placeholder1}
+        src={assetObj?.icon_uri || "Placeholder1"}
         rounded="full"
-        className="basis-1/5 aspect-square object-cover self-center max-w-[300px]"
+        className="basis-1/2 aspect-square object-cover self-center max-w-[300px]"
       />
       <div className="basis-4/5 flex flex-col gap-4">
         <h1 className="title-md">{assetObj?.name ?? config.defaultAsset?.name}</h1>
